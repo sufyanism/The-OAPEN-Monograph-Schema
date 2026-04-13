@@ -2,7 +2,6 @@
 
 A structured schema and transformation system for converting flat-file metadata into **ONIX 3.0-compliant XML**, tailored for **OAPEN (Open Access Publishing in European Networks)** monographs.
 
----
 
 ## 🚀 Overview
 
@@ -13,7 +12,6 @@ This project focuses on:
 - Mapping metadata to ONIX 3.0 format
 - Enabling seamless integration with publishing and distribution systems
 
----
 
 ## 🎯 Objectives
 
@@ -23,7 +21,6 @@ This project focuses on:
 - ⚡ Provide a lightweight, stateless processing system  
 - 🧩 Ensure compatibility with OAPEN infrastructure  
 
----
 
 ## ✨ Features
 
@@ -34,7 +31,6 @@ This project focuses on:
 - 🔍 Validates structured metadata fields  
 - 🌍 Designed for open-access monograph ecosystems  
 
----
 
 ## 🏗️ Tech Stack
 
@@ -44,6 +40,10 @@ This project focuses on:
 
 **Frontend**
 - HTML5  
+
+Uploading OAPEN-Schema.mp4…
+
+
 - CSS3  
 - Vanilla JavaScript  
 
@@ -51,32 +51,6 @@ This project focuses on:
 - pyyaml – YAML parsing  
 - lxml – XML generation  
 
----
-
-## 📁 Project Structure
-
-```
-The-OAPEN-Monograph-Schema/
-│
-├── app/
-│   ├── main.py
-│   ├── transformer.py
-│   └── schema.yaml
-│
-├── frontend/
-│   ├── index.html
-│   ├── styles.css
-│   └── script.js
-│
-├── examples/
-│   ├── sample.yaml
-│   └── output.xml
-│
-├── requirements.txt
-└── README.md
-```
-
----
 
 ## ⚙️ Installation
 
@@ -98,7 +72,6 @@ venv\Scripts\activate    # Windows
 pip install -r requirements.txt
 ```
 
----
 
 ## ▶️ Usage
 
@@ -143,52 +116,33 @@ currency: USD
   <NotificationType>03</NotificationType>
   <DescriptiveDetail>
     <TitleDetail>
-      <TitleText>Example Book Title</TitleText>
+      <TitleText>Example
+
+ Book Title</TitleText>
     </TitleDetail>
   </DescriptiveDetail>
 </Product>
 ```
 
----
+## ▶️ Demo
+## About Me 
+✨ I’m **Sufyan bin Uzayr**, an open-source developer passionate about building and sharing meaningful projects.
+You can learn more about me and my work at [sufyanism.com](https://sufyanism.com/) or connect with me on [Linkedin](https://www.linkedin.com/in/sufyanism)
 
-## 🔒 Architecture Principles
+## Your all-in-one learning hub! 
+🚀 Explore courses and resources in coding, tech, and development at **zeba.academy** and **code.zeba.academy**. Empower yourself with practical skills through curated tutorials, real-world projects, and hands-on experience. Level up your tech game today! 💻✨
 
-- ❌ No database  
-- ❌ No file storage  
-- ✅ Fully stateless backend  
-- ✅ In-memory processing only  
-- ✅ Secure and privacy-friendly  
+**Zeba Academy**  is a learning platform dedicated to **coding**, **technology**, and **development**.  
+➡ Visit our main site: [zeba.academy](https://zeba.academy)   </br>
+➡ Explore hands-on courses and resources at: [code.zeba.academy](https://code.zeba.academy)   </br>
+➡ Check out our YouTube for more tutorials: [zeba.academy](https://www.youtube.com/@zeba.academy)  </br>
+➡ Follow us on Instagram: [zeba.academy](https://www.instagram.com/zeba.academy/)  </br>
 
----
+**Thank you for visiting!**
 
-## 🛠 Future Improvements
 
-- ONIX 3.0 full schema validation (XSD)  
-- Multi-author and contributor support  
-- Subject classification integration  
-- DOI and funding metadata support  
-- API versioning and deployment support  
 
----
 
-## 🤝 Contributing
 
-Contributions are welcome!
 
-1. Fork the repository  
-2. Create a feature branch  
-3. Commit your changes  
-4. Submit a Pull Request  
 
----
-
-## 📄 License
-
-This project is licensed under the MIT License.
-
----
-
-## 👨‍💻 Author
-
-**Sufyan**  
-Building tools for open-access publishing and metadata transformation  
