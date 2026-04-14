@@ -3,10 +3,8 @@
 A structured schema and transformation system for converting flat-file metadata into **ONIX 3.0-compliant XML**, **OAPEN (Open Access Publishing in European Networks)** monographs.
 
 
-## 🚀 Overview
-
+## 🚀 Overvie
 The **OAPEN Monograph Schema** project provides a standardized approach to representing and transforming metadata for open-access academic books.
-
 This project focuses on:
 - Defining a structured metadata schema (YAML-based)
 - Mapping metadata to ONIX 3.0 format
@@ -14,16 +12,13 @@ This project focuses on:
 
 
 ## 🎯 Objectives
-
 - 📖 Standardize monograph metadata representation  
 - 🔄 Convert flat-file data into ONIX 3.0 XML  
-- 🌐 Support open-access publishing workflows  
 - ⚡ Provide a lightweight, stateless processing system  
 - 🧩 Ensure compatibility with OAPEN infrastructure  
 
 
 ## ✨ Features
-
 - 📄 YAML-based metadata input  
 - 🔁 Automated ONIX 3.0 XML generation  
 - ⚡ Fast, in-memory processing (no storage)  
@@ -33,17 +28,12 @@ This project focuses on:
 
 
 ## 🏗️ Tech Stack
-
 **Backend**
 - Python 3.10+  
 - FastAPI (stateless microservice)
 
 **Frontend**
 - HTML5  
-
-Uploading OAPEN-Schema.mp4…
-
-
 - CSS3  
 - Vanilla JavaScript  
 
@@ -125,6 +115,9 @@ currency: USD
 ```
 
 ## ▶️ Demo
+Uploading OAPEN-Schema.mp4…
+
+
 ## About Me 
 ✨ I’m **Sufyan bin Uzayr**, an open-source developer passionate about building and sharing meaningful projects.
 You can learn more about me and my work at [sufyanism.com](https://sufyanism.com/) or connect with me on [Linkedin](https://www.linkedin.com/in/sufyanism)
