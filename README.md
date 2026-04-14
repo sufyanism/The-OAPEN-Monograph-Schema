@@ -114,9 +114,6 @@ currency: USD
 </Product>
 ```
 
-## ▶️ Demo
-OAPEN-Schema.mp4
-
 
 ## About Me 
 ✨ I’m **Sufyan bin Uzayr**, an open-source developer passionate about building and sharing meaningful projects.
