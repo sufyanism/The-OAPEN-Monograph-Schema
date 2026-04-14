@@ -2,7 +2,7 @@
 A structured schema and transformation system for converting flat-file metadata into **ONIX 3.0-compliant XML**, **OAPEN (Open Access Publishing in European Networks)** monographs.
 
 
-## 🚀 Overvie
+## 🚀 Overview
 The **OAPEN Monograph Schema** project provides a standardized approach to representing and transforming metadata for open-access academic books.
 This project focuses on:
 - Defining a structured metadata schema (YAML-based)
