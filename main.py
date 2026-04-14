@@ -1,12 +1,4 @@
-# =====================================================
-# Flat-File to ONIX 3.0 Generator (OAPEN Monograph)
-# Tech Stack: FastAPI + Python 3.10 + Vanilla JS
-# Stateless | No DB | No File Storage
-# =====================================================
 
-# =============================
-# BACKEND: main.py
-# =============================
 from fastapi import FastAPI, UploadFile, File, HTTPException
 from fastapi.responses import Response, HTMLResponse
 import yaml
@@ -116,45 +108,162 @@ HTML_PAGE = """
 <html>
 <head>
     <title>ONIX 3.0 Generator</title>
+
     <style>
-        body { font-family: Arial; text-align: center; margin-top: 50px; }
-        input, button { padding: 10px; margin: 10px; }
-        button { cursor: pointer; }
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: #111827;
+            padding: 40px;
+            border-radius: 16px;
+            width: 400px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        .drop-zone {
+            border: 2px dashed #374151;
+            padding: 30px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .drop-zone:hover {
+            border-color: #3b82f6;
+            background: rgba(59,130,246,0.1);
+        }
+
+        .drop-zone.dragover {
+            border-color: #22c55e;
+            background: rgba(34,197,94,0.1);
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            background: #3b82f6;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #2563eb;
+        }
+
+        button:disabled {
+            background: #555;
+            cursor: not-allowed;
+        }
+
+        #status {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        .success { color: #22c55e; }
+        .error { color: #ef4444; }
     </style>
 </head>
+
 <body>
-    <h2>Flat-File to ONIX 3.0 Generator</h2>
-    <input type="file" id="fileInput" accept=".yaml" />
-    <br>
-    <button onclick="upload()">Convert to ONIX</button>
 
-    <script>
-        async function upload() {
-            const file = document.getElementById('fileInput').files[0];
-            if (!file) return alert('Select a YAML file');
+<div class="container">
+    <h2>📘 ONIX 3.0 Generator</h2>
 
-            const formData = new FormData();
-            formData.append('file', file);
+    <div class="drop-zone" id="dropZone">
+        Drag & Drop YAML File<br>or Click to Upload
+        <input type="file" id="fileInput" accept=".yaml" hidden>
+    </div>
 
-            const res = await fetch('/convert', {
-                method: 'POST',
-                body: formData
-            });
+    <button id="convertBtn" onclick="upload()">Convert to ONIX</button>
 
-            if (!res.ok) {
-                const err = await res.json();
-                return alert(err.detail);
-            }
+    <div id="status"></div>
+</div>
 
-            const blob = await res.blob();
-            const url = window.URL.createObjectURL(blob);
+<script>
+const dropZone = document.getElementById("dropZone");
+const fileInput = document.getElementById("fileInput");
+const statusDiv = document.getElementById("status");
+const btn = document.getElementById("convertBtn");
 
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'onix.xml';
-            a.click();
+dropZone.addEventListener("click", () => fileInput.click());
+
+dropZone.addEventListener("dragover", (e) => {
+    e.preventDefault();
+    dropZone.classList.add("dragover");
+});
+
+dropZone.addEventListener("dragleave", () => {
+    dropZone.classList.remove("dragover");
+});
+
+dropZone.addEventListener("drop", (e) => {
+    e.preventDefault();
+    dropZone.classList.remove("dragover");
+    fileInput.files = e.dataTransfer.files;
+});
+
+async function upload() {
+    const file = fileInput.files[0];
+
+    if (!file) {
+        statusDiv.innerHTML = "<span class='error'>⚠️ Please select a YAML file</span>";
+        return;
+    }
+
+    btn.disabled = true;
+    statusDiv.innerHTML = "⏳ Processing...";
+
+    const formData = new FormData();
+    formData.append("file", file);
+
+    try {
+        const res = await fetch("/convert", {
+            method: "POST",
+            body: formData
+        });
+
+        if (!res.ok) {
+            const err = await res.json();
+            throw new Error(err.detail);
         }
-    </script>
+
+        const blob = await res.blob();
+        const url = window.URL.createObjectURL(blob);
+
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "onix.xml";
+        a.click();
+
+        statusDiv.innerHTML = "<span class='success'>✅ Conversion successful! Download started.</span>";
+
+    } catch (err) {
+        statusDiv.innerHTML = "<span class='error'>❌ " + err.message + "</span>";
+    }
+
+    btn.disabled = false;
+}
+</script>
+
 </body>
 </html>
 """
@@ -170,5 +279,4 @@ def home():
 # uvicorn main:app --reload
 # uvicorn main:app --reload --host 0.0.0.0 --port 8000
 # open http://localhost:8000/
-
 
