@@ -1,6 +1,6 @@
 # 📚 The OAPEN Monograph Schema
 
-A structured schema and transformation system for converting flat-file metadata into **ONIX 3.0-compliant XML**, tailored for **OAPEN (Open Access Publishing in European Networks)** monographs.
+A structured schema and transformation system for converting flat-file metadata into **ONIX 3.0-compliant XML**, **OAPEN (Open Access Publishing in European Networks)** monographs.
 
 
 ## 🚀 Overview
